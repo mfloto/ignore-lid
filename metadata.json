@@ -1,0 +1,8 @@
+{
+  "name": "Ignore Lid",
+  "description": "Ignores the lid switch action",
+  "uuid": "ignore-lid@gnome-extensions.mfloto.com",
+  "shell-version": [
+    "49"
+  ]
+}

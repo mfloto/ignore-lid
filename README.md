@@ -1,0 +1,30 @@
+# Ignore Lid 🌪️
+
+| ![Extension toggle disabled - Lid is active](screenshots/lid-active.png) | ![Extension toggle enabled - Lid is ignored](screenshots/lid-ignored.png) |
+|:---:|:---:|
+| Extension toggle disabled - Lid is active | Extension toggle enabled - Lid is ignored |
+
+This exntesion simply blocks the lid-switch on distros with systemd, to temporarily close your laptop and move without disrupting anything actively running. It does it by making a D-Bus InhibitRemote call to logind, which opens and returns a file descriptor. As long as the file descriptor is open, the lid switch is ignored. You can verify the block by checking the output of `systemd-inhibit --list`.
+
+
+Important note: This extension only disables the lid switch. It does not alter any power management settings. For this, you might want to use an extension like [Caffeine](https://extensions.gnome.org/extension/517/caffeine/) in combination with this one.
+
+## Prerequisites
+- Gnome Shell 49 or higher
+- systemd with logind
+
+## Manual Installation
+1. Clone the repository into ~/.local/share/gnome-shell/extensions/:
+   ```bash
+   cd ~/.local/share/gnome-shell/extensions/
+   git clone
+   ```
+2. Enable extension using Gnome Extensions or the following command:
+   ```bash
+   gnome-extensions enable ignore-lid@gnome-extensions.mfloto.com
+   ```
+
+For development and testing use e.g. the following command to create a windowed wayland session:
+```bash
+dbus-run-session gnome-shell --devkit --wayland
+```
