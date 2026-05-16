@@ -4,5 +4,6 @@
   "uuid": "ignore-lid@gnome-extensions.mfloto.com",
   "shell-version": [
     "49"
-  ]
+  ],
+  "url": "https://github.com/mfloto/ignore-lid"
 }

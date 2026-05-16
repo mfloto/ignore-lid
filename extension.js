@@ -7,20 +7,6 @@ import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import { Extension, gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
 import { QuickToggle, SystemIndicator } from 'resource:///org/gnome/shell/ui/quickSettings.js';
 
-const LogindInterface = `<node>
-<interface name="org.freedesktop.login1.Manager">
-    <method name="Inhibit">
-        <arg type="s" name="what" direction="in"/>
-        <arg type="s" name="who" direction="in"/>
-        <arg type="s" name="why" direction="in"/>
-        <arg type="s" name="mode" direction="in"/>
-        <arg type="h" name="fd" direction="out"/>
-    </method>
-</interface>
-</node>`;
-
-const LogindProxy = Gio.DBusProxy.makeProxyWrapper(LogindInterface);
-
 const IgnoreLidToggle = GObject.registerClass(
     class IgnoreLidToggle extends QuickToggle {
         constructor() {
@@ -63,6 +49,20 @@ const IgnoreLidIndicator = GObject.registerClass(
 
 export default class QuickSettingsIgnoreLidExtension extends Extension {
     enable() {
+        const LogindInterface = `<node>
+        <interface name="org.freedesktop.login1.Manager">
+            <method name="Inhibit">
+                <arg type="s" name="what" direction="in"/>
+                <arg type="s" name="who" direction="in"/>
+                <arg type="s" name="why" direction="in"/>
+                <arg type="s" name="mode" direction="in"/>
+                <arg type="h" name="fd" direction="out"/>
+            </method>
+        </interface>
+        </node>`;
+
+        const LogindProxy = Gio.DBusProxy.makeProxyWrapper(LogindInterface);
+
         this._inhibitorFd = null;
         this._inhibitRequestInProgress = false;
         this._logindProxy = new LogindProxy(
