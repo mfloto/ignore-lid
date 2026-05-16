@@ -6,8 +6,7 @@
 
 This exntesion simply blocks the lid-switch on distros with systemd, to temporarily close your laptop and move without disrupting anything actively running. It does it by making a D-Bus InhibitRemote call to logind, which opens and returns a file descriptor. As long as the file descriptor is open, the lid switch is ignored. You can verify the block by checking the output of `systemd-inhibit --list`.
 
-
-Important note: This extension only disables the lid switch. It does not alter any power management settings. For this, you might want to use an extension like [Caffeine](https://extensions.gnome.org/extension/517/caffeine/) in combination with this one.
+> Important note: This extension only disables the lid switch. It does not alter any power management settings. For this, you might want to use an extension like [Caffeine](https://extensions.gnome.org/extension/517/caffeine/) in combination with this one.
 
 ## Prerequisites
 - Gnome Shell 49
@@ -37,5 +36,5 @@ gnome-extensions enable ignore-lid@gnome-extensions.mfloto.com
 
 Building the extension into a zip file can be done with the following command:
 ```bash
-gnome-extensions pack
+gnome-extensions pack --force
 ```
