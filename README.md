@@ -17,14 +17,25 @@ Important note: This extension only disables the lid switch. It does not alter a
 1. Clone the repository into ~/.local/share/gnome-shell/extensions/:
    ```bash
    cd ~/.local/share/gnome-shell/extensions/
-   git clone
+   git clone git@github.com:mfloto/ignore-lid.git
    ```
 2. Enable extension using Gnome Extensions or the following command:
    ```bash
    gnome-extensions enable ignore-lid@gnome-extensions.mfloto.com
    ```
 
+## Development
 For development and testing use e.g. the following command to create a windowed wayland session:
 ```bash
 dbus-run-session gnome-shell --devkit --wayland
+```
+
+And enable the extension within the windowed session with:
+```bash
+gnome-extensions enable ignore-lid@gnome-extensions.mfloto.com
+```
+
+Building the extension into a zip file can be done with the following command:
+```bash
+gnome-extensions pack
 ```
