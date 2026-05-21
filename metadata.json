@@ -3,7 +3,7 @@
   "description": "Ignores the lid switch action",
   "uuid": "ignore-lid@gnome-extensions.mfloto.com",
   "shell-version": [
-    "49"
+    "49", "50"
   ],
   "url": "https://github.com/mfloto/ignore-lid",
   "version-name": "1.0"

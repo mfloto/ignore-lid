@@ -9,7 +9,7 @@ This exntesion simply blocks the lid-switch on distros with systemd, to temporar
 > Important note: This extension only disables the lid switch. It does not alter any power management settings. For this, you might want to use an extension like [Caffeine](https://extensions.gnome.org/extension/517/caffeine/) in combination with this one.
 
 ## Prerequisites
-- Gnome Shell 49
+- Gnome Shell 49 or 50
 - systemd with logind
 
 ## Manual Installation
